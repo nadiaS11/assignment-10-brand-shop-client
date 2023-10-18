@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <div className=" relative z-40 bg-black">
       <nav className="flex py-3 px-2   items-center justify-between lg:container mx-auto">
-        <div className="order-1 md:order-none ">
+        <div className=" ">
           <IoMenu
             onClick={() => setOpen(!open)}
             className="md:hidden font-medium text-7xl mr-2 "
@@ -60,7 +60,7 @@ const Header = () => {
             </NavLink>
           </ul>
         </div>
-        <figure className=" order-2 md:order-none">
+        <figure>
           <img
             className="w-32 rounded"
             src="/logo.png
@@ -68,7 +68,7 @@ const Header = () => {
             alt=""
           />
         </figure>
-        <div className="order-3">
+        <div>
           {!user ? (
             <NavLink
               className={({ isActive }) =>
@@ -112,7 +112,7 @@ const Header = () => {
                     className={({ isActive }) =>
                       isActive
                         ? " btn  font-bold"
-                        : "  btn-ghost  btn md:text-white     border-white font-bold text-right"
+                        : "  btn-ghost  btn md:text-white border-white font-bold text-right"
                     }
                   >
                     Log Out

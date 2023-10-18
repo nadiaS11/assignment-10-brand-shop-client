@@ -7,9 +7,6 @@ const Home = () => {
   return (
     <div>
       <Header></Header>
-      <Link to={"/add-product"} className="btn, btn-error">
-        Add Product
-      </Link>
     </div>
   );
 };
