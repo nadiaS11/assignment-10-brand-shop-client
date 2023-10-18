@@ -53,7 +53,7 @@ const LogIn = () => {
     >
       <ToastContainer limit={1}></ToastContainer>
       <section className=" ">
-        <div className="w-[400px] h-[550px] bg-white bg-opacity-10 rounded-2xl shadow-5xl  border border-r-0 border-b-0 border-opacity-30  ">
+        <div className="w-[400px] h-[550px] bg-white bg-opacity-10 rounded-2xl shadow-5xl  border border-r-0 border-b-0 border-opacity-30 backdrop-filter backdrop-blur-sm ">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:text-white">
               Sign in to your account

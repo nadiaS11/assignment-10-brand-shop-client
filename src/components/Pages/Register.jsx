@@ -68,8 +68,10 @@ const Register = () => {
       }}
       className="bg-cover bg-center bg-no-repeat h-screen bg-blend-overlay bg-[#524e4e] flex flex-col items-center justify-center "
     >
+      {" "}
+      <h2>Add Product here</h2>
       <section className=" ">
-        <div className="w-[400px] min-h-[550px] bg-white bg-opacity-10 rounded-2xl shadow-5xl  border border-r-0 border-b-0 border-opacity-30  ">
+        <div className="w-[400px] min-h-[550px] bg-white bg-opacity-10 rounded-2xl shadow-5xl  border border-r-0 border-b-0 border-opacity-30  backdrop-filter backdrop-blur-sm ">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl  ">
               Register

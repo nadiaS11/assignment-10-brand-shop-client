@@ -22,6 +22,7 @@ const Header = () => {
             className="md:hidden font-medium text-7xl mr-2 "
           ></IoMenu>
           <ul
+            onClick={() => setOpen(!open)}
             className={`absolute left-2 grid text-right duration-100 z-50   ${
               open
                 ? "top-32 bg-base-200 md:bg-none rounded space-y-2"
