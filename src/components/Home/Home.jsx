@@ -12,7 +12,7 @@ const Home = () => {
       <div className="lg:container grid md:grid-cols-3 mx-auto gap-10 my-16">
         {loadedBrands?.map((brand) => (
           <Link
-            to={`/${brand.name}`}
+            to={`/brands/${brand.name}`}
             key={brand._id}
             className="card bg-base-100 shadow-xl image-full"
           >

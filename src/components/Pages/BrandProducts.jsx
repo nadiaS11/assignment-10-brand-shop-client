@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 
@@ -9,6 +9,9 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+//rating read-only
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const BrandProducts = () => {
   const { name } = useParams();
@@ -84,11 +87,19 @@ const BrandProducts = () => {
                         <sup className="align-super text-sm">00</sup>
                       </p>
                       <span className="ml-2 text-xs uppercase">
-                        {product.rating}
+                        {" "}
+                        <Rating
+                          style={{ maxWidth: 180 }}
+                          value={product.rating}
+                          readOnly
+                        />
                       </span>
                     </div>
                     <div className="mt-8 flex flex-col sm:flex-row">
-                      <button className="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md bg-gray-800 py-2 px-8 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-gray-500">
+                      <Link
+                        to={`/update/${product._id}`}
+                        className="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md bg-gray-800 py-2 px-8 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-gray-500"
+                      >
                         {/* <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="mr-2 h-4 w-4"
@@ -104,10 +115,13 @@ const BrandProducts = () => {
                           />
                         </svg> */}
                         Update
-                      </button>
-                      <button className="mr-2 mb-4 flex cursor-pointer items-center font-semibold justify-center rounded-md border py-2 px-8 text-center text-gray-500 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-rose-500 hover:text-white">
+                      </Link>
+                      <Link
+                        to={`/products/${product._id}`}
+                        className="mr-2 mb-4 flex cursor-pointer items-center font-semibold justify-center rounded-md border py-2 px-8 text-center text-gray-500 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-rose-500 hover:text-white"
+                      >
                         Details
-                      </button>
+                      </Link>
                     </div>
                   </div>
                   <div className="mx-auto flex items-center px-5 pt-1 md:p-8">
@@ -123,8 +137,8 @@ const BrandProducts = () => {
           ))
         ) : (
           <p className="text-center font-bold text-4xl max-w-2xl mx-auto leading-snug">
-            Opps! <br /> Looks like we are out of supplies right now. Plase
-            check back soon.
+            Opps! <br /> Looks Like We're Out Of Stock Right Now. Please Check
+            back Soon.
           </p>
         )}
       </div>

@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import { useLoaderData } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 
-const AddProduct = () => {
-  const [newRating, setNewRating] = useState(0);
-  const handleAddProduct = (e) => {
+const Update = () => {
+  const product = useLoaderData();
+  const { _id, image, name, brand, type, price, rating, description } = product;
+
+  const [newRating, setNewRating] = useState(rating);
+
+  const handleUpdateProduct = (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -27,24 +32,24 @@ const AddProduct = () => {
     };
     console.log("product added", newProduct);
 
-    fetch("https://brand-shop-server-ten.vercel.app/products", {
-      method: "POST",
+    fetch(`https://brand-shop-server-ten.vercel.app/products/${_id}`, {
+      method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newProduct),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
-          toast("Product added successfully");
+        if (data.modifiedCount > 0) {
+          toast("Product updated successfully");
         }
       });
   };
   return (
     <div className="  pt-20 space-y-10 bg-gray-200 min-h-screen">
-      <h1 className="text-center font-bold text-2xl">Add New Product</h1>
+      <h1 className="text-center font-bold text-2xl">Update Product</h1>
       <form
-        onSubmit={handleAddProduct}
+        onSubmit={handleUpdateProduct}
         className="max-w-5xl container mx-auto px-5"
       >
         <div
@@ -59,6 +64,7 @@ const AddProduct = () => {
               <input
                 type="text"
                 name="name"
+                defaultValue={name}
                 placeholder="Product name"
                 className="input  input-bordered w-full  "
               />
@@ -72,6 +78,7 @@ const AddProduct = () => {
               <input
                 type="text"
                 name="price"
+                defaultValue={price}
                 placeholder="Price"
                 className="input input-bordered w-full"
               />
@@ -91,6 +98,7 @@ const AddProduct = () => {
                 type="text"
                 placeholder="Brand"
                 name="brand"
+                defaultValue={brand}
                 className="input input-bordered w-full "
               />
             </label>
@@ -121,6 +129,7 @@ const AddProduct = () => {
               <input
                 type="text"
                 name="type"
+                defaultValue={type}
                 placeholder="Type"
                 className="input input-bordered w-full"
               />
@@ -134,6 +143,7 @@ const AddProduct = () => {
               <input
                 type="text"
                 name="description"
+                defaultValue={description}
                 placeholder="Description"
                 className="input input-bordered w-full"
               />
@@ -149,6 +159,7 @@ const AddProduct = () => {
               <input
                 type="url"
                 name="image"
+                defaultValue={image}
                 placeholder="Product image"
                 className="input input-bordered w-full"
               />
@@ -158,7 +169,7 @@ const AddProduct = () => {
             type="submit"
             className="w-full mt-5 rounded-sm bg-black py-1 text-white font-semibold  text-xl"
           >
-            Add new product
+            Update
           </button>
         </div>
       </form>
@@ -166,6 +177,6 @@ const AddProduct = () => {
   );
 };
 
-AddProduct.propTypes = {};
+Update.propTypes = {};
 
-export default AddProduct;
+export default Update;

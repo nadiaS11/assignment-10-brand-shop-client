@@ -6,6 +6,8 @@ import MyCart from "./components/Pages/MyCart";
 import LogIn from "./components/Pages/Login";
 import Register from "./components/Pages/REgister";
 import BrandProducts from "./components/Pages/BrandProducts";
+import Details from "./components/Private/Details";
+import Update from "./components/Private/Update";
 
 const router = createBrowserRouter([
   {
@@ -18,10 +20,26 @@ const router = createBrowserRouter([
         loader: () => fetch("https://brand-shop-server-ten.vercel.app/brands"),
       },
       {
-        path: "/:name",
+        path: "/brands/:name",
         element: <BrandProducts></BrandProducts>,
         loader: () =>
           fetch("https://brand-shop-server-ten.vercel.app/products"),
+      },
+      {
+        path: "/products/:id",
+        element: <Details></Details>,
+        loader: ({ params }) =>
+          fetch(
+            `https://brand-shop-server-ten.vercel.app/products/${params.id}`
+          ),
+      },
+      {
+        path: "/update/:id",
+        element: <Update></Update>,
+        loader: ({ params }) =>
+          fetch(
+            `https://brand-shop-server-ten.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: "/add-product",
