@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const handleAddProduct = (e) => {
@@ -33,7 +34,7 @@ const AddProduct = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          alert("product added successfully");
+          toast("Product added successfully");
         }
       });
   };

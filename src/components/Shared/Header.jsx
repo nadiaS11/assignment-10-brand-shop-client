@@ -24,10 +24,8 @@ const Header = () => {
           <ul
             onClick={() => setOpen(!open)}
             className={`absolute left-2 grid text-right duration-100 z-50   ${
-              open
-                ? "top-32 bg-base-200 md:bg-none rounded space-y-2"
-                : "-top-60"
-            } md:static md:flex md:gap-5 py-2  text-xl px-2`}
+              open ? "top-32   md:bg-none rounded space-y-2" : "-top-60 "
+            } md:static md:flex md:gap-5 py-2   text-xl px-2`}
           >
             <NavLink
               className={({ isActive }) =>

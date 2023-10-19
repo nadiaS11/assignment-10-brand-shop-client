@@ -5,6 +5,7 @@ import AddProduct from "./components/Pages/AddProduct";
 import MyCart from "./components/Pages/MyCart";
 import LogIn from "./components/Pages/Login";
 import Register from "./components/Pages/REgister";
+import BrandProducts from "./components/Pages/BrandProducts";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,12 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: () => fetch("https://brand-shop-server-ten.vercel.app/brands"),
+      },
+      {
+        path: "/:name",
+        element: <BrandProducts></BrandProducts>,
+        loader: () =>
+          fetch("https://brand-shop-server-ten.vercel.app/products"),
       },
       {
         path: "/add-product",

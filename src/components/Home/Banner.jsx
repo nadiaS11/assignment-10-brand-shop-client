@@ -25,8 +25,6 @@ const Banner = ({ loadedBrands }) => {
       <h1 className="text-5xl text-center p-5 -mt-32 font-bold text-white bg-white bg-opacity-10 rounded-2xl shadow-5xl  border border-r-black  border-opacity-30 backdrop-filter backdrop-blur-sm animate-pulse ">
         Pioneering Digital Possibilities, <br /> One Byte at a Time.
       </h1>
-
-      <Link className="btn btn-ghost"> </Link>
     </div>
   );
 };

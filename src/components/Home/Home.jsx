@@ -11,7 +11,8 @@ const Home = () => {
       <Banner loadedBrands={loadedBrands}></Banner>
       <div className="lg:container grid md:grid-cols-3 mx-auto gap-10 my-16">
         {loadedBrands?.map((brand) => (
-          <div
+          <Link
+            to={`/${brand.name}`}
             key={brand._id}
             className="card bg-base-100 shadow-xl image-full"
           >
@@ -21,7 +22,7 @@ const Home = () => {
             <div className="card-body">
               <h2 className="card-title  ">{brand.name}</h2>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
