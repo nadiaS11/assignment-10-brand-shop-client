@@ -9,18 +9,20 @@ const Home = () => {
   return (
     <div>
       <Banner loadedBrands={loadedBrands}></Banner>
-      <div className="lg:container grid md:grid-cols-3 mx-auto gap-10 my-16">
+      <div className="lg:container grid md:grid-cols-2 lg:grid-cols-3 mx-auto gap-10 my-16">
         {loadedBrands?.map((brand) => (
           <Link
             to={`/brands/${brand.name}`}
             key={brand._id}
             className="card bg-base-100 shadow-xl image-full"
           >
-            <figure>
-              <img className="w-full h-52" src={brand.logo} alt=" " />
+            <figure className="h-56">
+              <img className="w-full" src={brand.logo} alt=" " />
             </figure>
             <div className="card-body">
-              <h2 className="card-title  ">{brand.name}</h2>
+              <h2 className="card-title text-2xl font-semibold ">
+                {brand.name}
+              </h2>
             </div>
           </Link>
         ))}

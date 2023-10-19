@@ -1,14 +1,53 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { useLoaderData } from "react-router-dom";
 
 //rating read-only
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { AuthContext } from "../Authentications/AuthProvider";
+import { toast } from "react-toastify";
 
 const Details = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+
+  const [cartData, setCartData] = useState([]);
+
   const product = useLoaderData();
   const { image, name, brand, type, price, rating, description } = product;
+
+  const handleAddToCart = (product) => {
+    const email = user?.email;
+    const cart = { email, product };
+    let cartCopy = [...cartData];
+
+    const filterCartData = cartData?.find(
+      (data) =>
+        data?.email === cart?.email && data?.product._id === cart?.product._id
+    );
+    if (filterCartData) {
+      toast("already added");
+      return;
+    } else {
+      cartCopy = [...cartData, cart];
+      setCartData(cartCopy);
+
+      //fetch here
+      fetch("https://brand-shop-server-ten.vercel.app/cart", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(cart),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            toast("Product added to cart.");
+          }
+        });
+    }
+  };
 
   console.log(product);
   return (
@@ -47,7 +86,10 @@ const Details = () => {
                 <span className="title-font font-medium text-2xl text-gray-900">
                   ${price}
                 </span>
-                <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+                >
                   Add To Cart
                 </button>
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">

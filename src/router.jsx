@@ -8,6 +8,7 @@ import Register from "./components/Pages/REgister";
 import BrandProducts from "./components/Pages/BrandProducts";
 import Details from "./components/Private/Details";
 import Update from "./components/Private/Update";
+import PrivateRoute from "./components/Private/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <MyCart></MyCart>,
+        element: (
+          <PrivateRoute>
+            <MyCart></MyCart>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
