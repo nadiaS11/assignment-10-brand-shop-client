@@ -10,11 +10,13 @@ import Details from "./components/Private/Details";
 import Update from "./components/Private/Update";
 import PrivateRoute from "./components/Private/PrivateRoute";
 import MyCart from "./components/Private/MyCart";
+import ErrorPage from "./components/Pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -29,7 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/:id",
-        element: <Details></Details>,
+        element: (
+          <PrivateRoute>
+            <Details></Details>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://brand-shop-server-ten.vercel.app/products/${params.id}`
@@ -37,7 +43,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/update/:id",
-        element: <Update></Update>,
+        element: (
+          <PrivateRoute>
+            <Update></Update>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://brand-shop-server-ten.vercel.app/products/${params.id}`
@@ -45,19 +55,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-product",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <PrivateRoute>
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+        ),
       },
       {
-        path: "/cart/:email",
+        path: "/cart",
         element: (
           <PrivateRoute>
             <MyCart></MyCart>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(
-            `https://brand-shop-server-ten.vercel.app/cart/${params.email}`
-          ),
+        loader: () => fetch(`https://brand-shop-server-ten.vercel.app/cart`),
       },
       {
         path: "/login",

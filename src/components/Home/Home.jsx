@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link, useLoaderData } from "react-router-dom";
 import Banner from "./Banner";
+import Footer from "./Footer";
 
 const Home = () => {
   const loadedBrands = useLoaderData();
@@ -27,6 +28,8 @@ const Home = () => {
           </Link>
         ))}
       </div>
+
+      <Footer></Footer>
     </div>
   );
 };

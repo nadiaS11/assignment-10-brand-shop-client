@@ -57,7 +57,7 @@ const Header = () => {
                   ? "     btn    font-bold"
                   : " md:text-white     font-bold btn-ghost btn"
               }
-              to={`/cart/${user?.email}`}
+              to={`/cart`}
             >
               My Cart
             </NavLink>

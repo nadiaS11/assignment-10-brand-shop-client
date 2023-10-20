@@ -11,7 +11,11 @@ const PrivateRoute = ({ children }) => {
   console.log(location);
 
   if (loading) {
-    return <span className="loading loading-spinner loading-lg"></span>;
+    return (
+      <div className="flex flex-col h-screen mx-auto items-center justify-center">
+        <Spinner />
+      </div>
+    );
   }
   if (user) {
     return children;
