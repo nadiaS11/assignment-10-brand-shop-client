@@ -33,7 +33,7 @@ const Footer = () => {
           </Link>
         </li>
         <li>
-          <Link to="/cart" className="mr-4 hover:underline md:mr-6">
+          <Link to="/brands/Microsoft" className="mr-4 hover:underline md:mr-6">
             Microsoft
           </Link>
         </li>
