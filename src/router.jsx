@@ -2,13 +2,14 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "./components/Home/MainLayout";
 import Home from "./components/Home/Home";
 import AddProduct from "./components/Pages/AddProduct";
-import MyCart from "./components/Pages/MyCart";
+
 import LogIn from "./components/Pages/Login";
 import Register from "./components/Pages/REgister";
 import BrandProducts from "./components/Pages/BrandProducts";
 import Details from "./components/Private/Details";
 import Update from "./components/Private/Update";
 import PrivateRoute from "./components/Private/PrivateRoute";
+import MyCart from "./components/Private/MyCart";
 
 const router = createBrowserRouter([
   {
@@ -47,12 +48,16 @@ const router = createBrowserRouter([
         element: <AddProduct></AddProduct>,
       },
       {
-        path: "/cart",
+        path: "/cart/:email",
         element: (
           <PrivateRoute>
             <MyCart></MyCart>
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(
+            `https://brand-shop-server-ten.vercel.app/cart/${params.email}`
+          ),
       },
       {
         path: "/login",

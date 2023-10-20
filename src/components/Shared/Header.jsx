@@ -6,6 +6,8 @@ import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  // const { email } = user;
+  // console.log(email);
   // console.log(user, "from header");
   const handleLogOut = () => {
     logOut();
@@ -24,8 +26,10 @@ const Header = () => {
           <ul
             onClick={() => setOpen(!open)}
             className={`absolute left-2 grid text-right duration-100 z-50   ${
-              open ? "top-32   md:bg-none rounded space-y-2" : "-top-60 "
-            } md:static md:flex md:gap-5 py-2   text-xl px-2`}
+              open
+                ? "top-24 bg-black backdrop-blur text-white  md:bg-none rounded space-y-2"
+                : "-top-60 "
+            } md:static md:flex lg:gap-5 py-2   text-xl px-2`}
           >
             <NavLink
               className={({ isActive }) =>
@@ -53,7 +57,7 @@ const Header = () => {
                   ? "     btn    font-bold"
                   : " md:text-white     font-bold btn-ghost btn"
               }
-              to={"/cart"}
+              to={`/cart/${user?.email}`}
             >
               My Cart
             </NavLink>
