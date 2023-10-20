@@ -1,16 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "./components/Home/MainLayout";
-import Home from "./components/Home/Home";
-import AddProduct from "./components/Pages/AddProduct";
+import MainLayout from "../Home/MainLayout";
+import Home from "../Home/Home";
+import AddProduct from "../Pages/AddProduct";
 
-import LogIn from "./components/Pages/Login";
-import Register from "./components/Pages/REgister";
-import BrandProducts from "./components/Pages/BrandProducts";
-import Details from "./components/Private/Details";
-import Update from "./components/Private/Update";
-import PrivateRoute from "./components/Private/PrivateRoute";
-import MyCart from "./components/Private/MyCart";
-import ErrorPage from "./components/Pages/ErrorPage";
+import LogIn from "../Pages/Login";
+import Register from "../Pages/REgister";
+import BrandProducts from "../Pages/BrandProducts";
+import Details from "../Private/Details";
+import Update from "../Private/Update";
+import PrivateRoute from "../Private/PrivateRoute";
+import MyCart from "../Private/MyCart";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
