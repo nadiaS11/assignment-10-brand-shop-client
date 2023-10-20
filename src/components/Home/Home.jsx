@@ -27,7 +27,7 @@ const Home = () => {
       <Banner></Banner>
 
       {/* brands products */}
-      <div className="lg:container grid md:grid-cols-2 lg:grid-cols-3 mx-auto gap-10 my-24">
+      <div className="lg:container grid md:grid-cols-2 lg:grid-cols-3 mx-auto gap-10 my-24 px-2 ">
         {loadedBrands?.map((brand) => (
           <Link
             to={`/brands/${brand.name}`}
@@ -37,7 +37,7 @@ const Home = () => {
             <figure className="h-56">
               <img className="w-full" src={brand.logo} alt=" " />
             </figure>
-            <div className="card-body">
+            <div className="card-body ">
               <h2 className="card-title text-2xl font-semibold ">
                 {brand.name}
               </h2>
@@ -51,20 +51,16 @@ const Home = () => {
           backgroundImage:
             "url(https://i.ibb.co/SBxZq93/photo-1517874045092-09f497a82704-auto-format-fit-crop-q-80-w-2070-ixlib-rb-4-0.jpg)",
         }}
-        className="bg-cover bg-center bg-no-repeat h-[60vh] bg-blend-overlay bg-[#272525] flex flex-col items-center justify-center mx-auto  px-4"
+        className="bg-cover bg-center bg-no-repeat py-10 bg-blend-overlay bg-[#272525]  mx-auto  px-4"
       >
-        {/* <div className="my-32 mx-auto "> */}
         <h1 className=" text-5xl text-center text-gray-400 font-bold mb-20">
           Featured Deals
         </h1>
-        <div className="mx-auto max-w-md md:max-w-3xl lg:max-w-7xl">
-          <Marquee pauseOnHover speed={150}>
-            {products?.slice(3, 7).map((product) => (
-              <FeaturedCard key={product._id} product={product}></FeaturedCard>
-            ))}
-          </Marquee>
+        <div className="mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {products?.slice(3, 9).map((product) => (
+            <FeaturedCard key={product._id} product={product}></FeaturedCard>
+          ))}
         </div>
-        {/* </div> */}
       </div>
 
       <Newsletter></Newsletter>
