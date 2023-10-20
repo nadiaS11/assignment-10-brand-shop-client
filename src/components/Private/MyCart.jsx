@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useLoaderData, useParams } from "react-router-dom";
 import ProductCard from "../Shared/ProductCard";
@@ -48,22 +48,27 @@ const MyCart = () => {
 
   return (
     <div>
-      <h1 className="pt-16 text-3xl font-medium text-center">
-        Your added products
-      </h1>
-      <div className="grid lg:grid-cols-2 gap-10 px-5 mx-auto py-10">
-        {cart?.map((item) => (
-          <div key={item._id} className="relative">
-            <button
-              onClick={() => handleDelete(item._id)}
-              className="btn btn-circle btn-error absolute z-20 text-xl -right-3 -top-2"
-            >
-              X
-            </button>
-            <ProductCard product={item.product}></ProductCard>
-          </div>
-        ))}
-      </div>
+      <h1 className="pt-16 text-3xl font-medium text-center">Your Cart</h1>
+
+      {cart?.length > 0 ? (
+        <div className="grid lg:grid-cols-2 gap-10 px-5 mx-auto py-10">
+          {cart.map((item) => (
+            <div key={item._id} className="relative">
+              <button
+                onClick={() => handleDelete(item._id)}
+                className="btn btn-circle btn-error absolute z-20 text-xl -right-3 -top-2"
+              >
+                X
+              </button>
+              <ProductCard product={item.product}></ProductCard>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <h2 className="pt-16 text-xl mx-auto text-center">
+          You have not added any products
+        </h2>
+      )}
     </div>
   );
 };
