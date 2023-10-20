@@ -51,23 +51,20 @@ const Home = () => {
           backgroundImage:
             "url(https://i.ibb.co/SBxZq93/photo-1517874045092-09f497a82704-auto-format-fit-crop-q-80-w-2070-ixlib-rb-4-0.jpg)",
         }}
-        className="bg-cover bg-center bg-no-repeat h-[60vh] bg-blend-overlay bg-[#272525] flex flex-col items-center justify-center "
+        className="bg-cover bg-center bg-no-repeat h-[60vh] bg-blend-overlay bg-[#272525] flex flex-col items-center justify-center mx-auto  px-4"
       >
-        <div className="my-32">
-          <h1 className=" text-5xl text-center text-gray-400 font-bold mb-20">
-            Featured Deals
-          </h1>
-          <div className="mx-auto">
-            <Marquee pauseOnHover speed={150}>
-              {products?.slice(3, 7).map((product) => (
-                <FeaturedCard
-                  key={product._id}
-                  product={product}
-                ></FeaturedCard>
-              ))}
-            </Marquee>
-          </div>
+        {/* <div className="my-32 mx-auto "> */}
+        <h1 className=" text-5xl text-center text-gray-400 font-bold mb-20">
+          Featured Deals
+        </h1>
+        <div className="mx-auto max-w-md md:max-w-3xl lg:max-w-7xl">
+          <Marquee pauseOnHover speed={150}>
+            {products?.slice(3, 7).map((product) => (
+              <FeaturedCard key={product._id} product={product}></FeaturedCard>
+            ))}
+          </Marquee>
         </div>
+        {/* </div> */}
       </div>
 
       <Newsletter></Newsletter>

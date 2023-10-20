@@ -6,7 +6,7 @@ const FeaturedCard = ({ product }) => {
   const discount = parseInt((price * 30) / 100);
 
   return (
-    <div className="flex justify-center items-center px-16 w-96">
+    <div className="flex justify-center items-center px-16 w-96 mx-auto">
       <div className="group border-gray-100/30 flex w-full max-w-xs flex-col self-center overflow-hidden rounded-lg border bg-gray-700 shadow-md">
         <div className="relative mx-3 my-3 flex h-60 overflow-hidden " href="#">
           <img
@@ -21,9 +21,6 @@ const FeaturedCard = ({ product }) => {
             <div className="mt-2 mb-5 flex items-center justify-between">
               <p>
                 <span className="text-3xl font-bold text-white">${price}</span>
-                <span className="text-sm text-white line-through">
-                  {price + discount}
-                </span>
               </p>
             </div>
           </div>
