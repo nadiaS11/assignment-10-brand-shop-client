@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const FeaturedCard = ({ product }) => {
-  const { name, image, price } = product;
+  const { name, image, price, _id } = product;
 
   const discount = parseInt((price * 30) / 100);
 
@@ -14,14 +15,21 @@ const FeaturedCard = ({ product }) => {
             src={image}
             alt="product image"
           />
-          <div className="peer peer-hover:right-0 absolute top-0 -right-96 h-full w-full  bg-gray-700  transition-all delay-100 duration-1000 hover:right-0 z-50 p-5">
-            <a href="#">
-              <h5 className="text-xl tracking-tight text-white">{name}</h5>
-            </a>
-            <div className="mt-2 mb-5 flex items-center justify-between">
-              <p>
-                <span className="text-3xl font-bold text-white">${price}</span>
-              </p>
+          <div className="peer peer-hover:right-0 absolute top-0 -right-96 h-full w-full  bg-gray-700 transition-all delay-100 duration-1000 hover:right-0 z-50  p-5">
+            <div className="mt-2 mb-5  gap-16  flex flex-col justify-between ">
+              <div className="">
+                <h5 className="text-xl tracking-tight text-white">{name}</h5>
+
+                <p className="text-3xl font-bold flex-grow text-white">
+                  ${price}
+                </p>
+              </div>
+              <Link
+                to={`/products/${_id}`}
+                className="  cursor-pointer font-semibold  rounded-md border  py-2 px-8 text-center text-gray-400   transition duration-150 ease-in-out hover:translate-y-1 hover:bg-gray-500 hover:text-white"
+              >
+                Details
+              </Link>
             </div>
           </div>
           <svg

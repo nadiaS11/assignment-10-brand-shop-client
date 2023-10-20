@@ -28,29 +28,34 @@ const Footer = () => {
           </Link>
         </li>
         <li>
-          Brands
-          <select className="ml-2 w-20 bg-gray-800">
-            <option value="Apple" className="text-gray-500 ">
-              Apple
-            </option>
-            <option value="Google" className=" text-gray-500">
-              Google
-            </option>
-            <option value="Samsung" className="  text-gray-500">
-              {" "}
-              Samsung
-            </option>
-            <option value="Intel" className="  text-gray-500">
-              Intel
-            </option>
-            <option value="Microsoft" className="  text-gray-500">
-              Microsoft
-            </option>
-
-            <option value="Sony" className="  text-gray-500">
-              Sony
-            </option>
-          </select>
+          <Link to="/brands/Apple" className="mr-4 hover:underline md:mr-6">
+            Apple
+          </Link>
+        </li>
+        <li>
+          <Link to="/cart" className="mr-4 hover:underline md:mr-6">
+            Microsoft
+          </Link>
+        </li>
+        <li>
+          <Link to="/brands/Google" className="mr-4 hover:underline md:mr-6">
+            Google
+          </Link>
+        </li>
+        <li>
+          <Link to="/brands/Intel" className="mr-4 hover:underline md:mr-6">
+            Intel
+          </Link>
+        </li>
+        <li>
+          <Link to="/brands/Samsung" className="mr-4 hover:underline md:mr-6">
+            Samsung
+          </Link>
+        </li>
+        <li>
+          <Link to="/brands/Sony" className="mr-4 hover:underline md:mr-6">
+            Sony
+          </Link>
         </li>
       </ul>
     </footer>

@@ -32,10 +32,10 @@ const Home = () => {
           <Link
             to={`/brands/${brand.name}`}
             key={brand._id}
-            className="card bg-base-100 shadow-xl image-full"
+            className="card bg-base-100 w-full mx-auto shadow-xl image-full"
           >
-            <figure className="h-56">
-              <img className="w-full" src={brand.logo} alt=" " />
+            <figure className="h-56 w-full ">
+              <img className="w-full  mx-auto" src={brand.logo} alt=" " />
             </figure>
             <div className="card-body ">
               <h2 className="card-title text-2xl font-semibold ">
